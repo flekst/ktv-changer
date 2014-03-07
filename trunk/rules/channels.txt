@@ -8,3 +8,5 @@ TV1000rk	TV1000 Kino
 TV1000rk	TV1000 г. Kino
 TV1000	TV1000 -
 TV1000	TV1000 г. - 
+Friday	Программа телеканала «Пятница»
+Animal	Программа телеканала «Animal Planet»
