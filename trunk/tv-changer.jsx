@@ -1,6 +1,5 @@
 ﻿#target "indesign"
-/** TODO: Дать возможность сохранять расположение каталога замен */
-var DataRoot = '\\\\server1\\Работа\\Evgeniy\\tv-changer\\';
+var DataRoot = 'd:\\Work\\TV=works\\ktv-changer\\rules\\';
 /**
     скрипт для централизованной обработки сеток тв-программы.
     Предполагаемые функции:
@@ -11,11 +10,10 @@ var DataRoot = '\\\\server1\\Работа\\Evgeniy\\tv-changer\\';
     
     */
 
-/** Todo: Уйти от этого костыля  - ненужной глобальной переменной */
 var myDoc = app.activeDocument;
 
 
-/** TODO: Определиться окончательно, надо ли выделять локализацию в отдельный файл, или нет */
+
 var tvchmsg = {
         nothingToDo: 'Выделите фрейм и повторите попытку',
         unsupportedSelection: 'Выбранный элемент не поддерживается. \nВыделите текстовый фрейм и повторите попытку',
@@ -80,11 +78,14 @@ function _tv_changer (selectedObject) {
         /** Читает шаблон автозамен, вставляет необходимые изменения */
         var RulesDir = tv_changer_config.RulesDir;
         var ruleFile = File (RulesDir+RuleName+'.txt');
-        
+        var RuleFind;
+       var RuleChange;
+       var tmpdata;
+       
         if (RuleName.toLowerCase() ==  tv_changer_config.ChangeRuleTitle) {
-                    var tmpdata = RuleParameter.split('#');
-                    var RuleFind = tmpdata[0];
-                    var RuleChange = tmpdata[1];
+                    tmpdata = RuleParameter.split('#');
+                    RuleFind = tmpdata[0];
+                    RuleChange = tmpdata[1];
                     if (RuleFind == undefined) return null;
                     if (RuleChange == undefined) RuleFind = '';
                     
@@ -128,22 +129,27 @@ function _tv_changer (selectedObject) {
     }
     
     this.ApplyFindChange = function (ObjectToWork, parameters) {
-      
-        app.findGrepPreferences = NothingEnum.nothing; 
-        app.changeGrepPreferences = NothingEnum.nothing;
+        var needForRevert = false;
+
          if (parameters.find == '') { return; }
         app.findGrepPreferences.findWhat = parameters.find;
         app.changeGrepPreferences.changeTo =parameters.change;
         if (parameters.findParams != '') {
             app.findGrepPreferences.appliedParagraphStyle = myDoc.paragraphStyles.item(parameters.findParams);
+            needForRevert = true;
         }
         if (parameters.changeParams != '') {
             app.changeGrepPreferences.appliedParagraphStyle = myDoc.paragraphStyles.item(parameters.changeParams);
+            needForRevert = true;
         }
         
-            /*  Читае необходимый шаблон по имени, подтавляет в него параметр, применяет к объекту */
-           var retval =  ObjectToWork.changeGrep();
-      //     alert (retval);
+
+          ObjectToWork.changeGrep();
+          if (needForRevert ){
+            app.findGrepPreferences = NothingEnum.nothing; 
+            app.changeGrepPreferences = NothingEnum.nothing;
+        }
+
        }
     this.ApplyChangeList = function (object, changeListName) {
         var chListFile = File (changeListName);
