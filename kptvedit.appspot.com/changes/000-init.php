@@ -176,7 +176,7 @@ $init_changes[] = new regChanger (
 		);
 $init_changes[] = new regChanger (
 		'Исправление убрать точку после времени',
-		'^(?<=\d\d\.\d\d)\.',
+		'(?<=\d\d\.\d\d)\.',
 		"", 'i', 1
 		);
 
