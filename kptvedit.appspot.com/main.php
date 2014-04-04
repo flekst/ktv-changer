@@ -15,12 +15,11 @@ if ( isset ($_REQUEST['input'])  ){
 }
 
 if ($init_hint) {
-$hint_data = "<div id='log' style='float:left; top:0px; padding:3pt; margin:3pt; background:cyan;'>Выполнены замены:<ol>".$init_hint."</ol></div>";
+$hint_data = "<div id='log' style='float:left; width:300px; top:0px; padding:3pt; margin:3pt; background:cyan;'>Выполнены замены:<ol>".$init_hint."</ol></div>";
 } else {
 $hint_data="";
 }
-?><?php echo $hint_data;?>
-<div ><form method="POST"><textarea name="input" rows = "20" cols="80" ><?=htmlspecialchars($result);?></textarea><br />
+?><?php echo $hint_data;?><div ><form method="POST"><textarea name="input" rows = "20" cols="80" ><?=htmlspecialchars($result);?></textarea><br />
 <input type="submit" value="Обработать">
 </form>
 </div>
