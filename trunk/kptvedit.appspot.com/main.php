@@ -20,7 +20,18 @@ $hint_data = "<div id='log' style='float:left; width:300px; top:0px; padding:3pt
 $hint_data="";
 }
 ?><?php echo $hint_data;?><div ><form method="POST"><textarea name="input" rows = "20" cols="80" ><?=htmlspecialchars($result);?></textarea><br />
-<input type="submit" value="Обработать">
+<script>
+function ChangeToDots() {
+	var change = /(\d\d)[.:](\d\d)/gi;
+	document.forms[0].input.value = document.forms[0].input.value.replace(change,'$1:$2');
+}
+function ChangeToDot() {
+	var change = /(\d\d)[.:](\d\d)/gi;
+	document.forms[0].input.value = document.forms[0].input.value.replace(change,'$1.$2');
+}
+</script><input type="submit" value="Обработать">&nbsp;<input type="button" onClick="javascript:ChangeToDots();" value="Разделить время двоеточием" />&nbsp;<input type="button" onClick="javascript:ChangeToDot();" value="Разделить время точкой" />
+</form>
+</div>
 </form>
 </div>
 
