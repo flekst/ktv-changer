@@ -42,6 +42,13 @@ class regChanger {
 	}
 }
 $init_changes[] = new regChanger (
+		'Убрать "русская серия"',
+		'"Русская серия"\.\s',
+		"", 'i', 1
+		);
+
+
+$init_changes[] = new regChanger (
 		'Нормализация конца строк',
 		'[\r\n]+',
 		"\n"
