@@ -87,7 +87,7 @@ function _tv_changer (selectedObject) {
                     RuleFind = tmpdata[0];
                     RuleChange = tmpdata[1];
                     if (RuleFind == undefined) return null;
-                    if (RuleChange == undefined) RuleFind = '';
+                    if (RuleChange == undefined) RuleChange = '';
                     
                     var retval = { find: RuleFind, change: RuleChange,  findParams:"", changeParams:"" };
                     return retval;
