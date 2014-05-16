@@ -100,7 +100,7 @@ function _tv_changer (selectedObject) {
                 var RuleFindParams = ruleFile.readln();
                 var RuleChangeParms =ruleFile.readln();
                 if (RuleFind == undefined) return null;
-                 if (RuleChange == undefined) RuleFind = '';
+                 if (RuleChange == undefined) RuleChange = '';
                  if (RuleFindParams == undefined) RuleFindParams = "";
                  if (RuleChangeParms == undefined) RuleChangeParms = "";
                 
