@@ -1,4 +1,0 @@
-var tv_changer_config = {
-    root : '\\\\server1\\Работа\\Evgeniy\\tv-changer\\',
-    list : 'channels.txt' 
-}
