@@ -197,6 +197,7 @@ function _tv_changer (selectedObject) {
     /** _tv_changer_constructor return */
     return this;
 }
+
 /** головная функция скрипта */
 function tvch_main() {
     try {
@@ -204,8 +205,20 @@ function tvch_main() {
         app.changeGrepPreferences = NothingEnum.nothing;
 
         var objectToWork = app.activeDocument.selection[0];
-        if (objectToWork != '[object TextFrame]') throw (tvchmsg.unsupportedSelection);
-        if (objectToWork == undefined) throw (tvchmsg.nothingToDo);
+        if (objectToWork == undefined) throw (tvchmsg.nothingToDo);	
+ alert (objectToWork);
+        if (    (objectToWork == '[object TextFrame]') ||
+        	(objectToWork == '[object Text]') ||
+        	(objectToWork == '[object InsertionPoint]') ||
+        	(objectToWork == '[object Character]') || 
+            (objectToWork == '[object Paragraph]') || 
+            (objectToWork == '[object Line]') 
+        {
+        	objectToWork=objectToWork.parentStory
+        } else {
+        	throw (tvchmsg.unsupportedSelection+" "+objectToWork);
+        }
+
         
         var myChanger = new _tv_changer(objectToWork);
         myChanger.DoIt(objectToWork);
