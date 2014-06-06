@@ -206,7 +206,7 @@ function tvch_main() {
 
         var objectToWork = app.activeDocument.selection[0];
         if (objectToWork == undefined) throw (tvchmsg.nothingToDo);	
- alert (objectToWork);
+// alert (objectToWork);
         if (    (objectToWork == '[object TextFrame]') ||
         	(objectToWork == '[object Text]') ||
         	(objectToWork == '[object InsertionPoint]') ||
