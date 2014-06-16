@@ -26,3 +26,4 @@ Discovery	телеканала «Discovery Channel
 
 Domashniy	Программа телеканала «Домашний» 
 rtr	Россия 1
+ntv	НТВ
