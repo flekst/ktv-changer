@@ -1,4 +1,4 @@
 -=-
 
-tv_1402/tv_verh_osn
-tv_1402/tv_verh_niz
+tv_1402/tv_niz_osn
+tv_1402/tv_niz_film
