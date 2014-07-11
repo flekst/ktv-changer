@@ -29,4 +29,3 @@ rtr	Россия 1
 ntv	НТВ
 Eurosport	Евроспорт
 Eurosport	Eurosport
-test	Тестовый канал

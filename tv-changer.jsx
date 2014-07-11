@@ -112,39 +112,7 @@ function _tv_changer (selectedObject) {
         } finally {
                 ruleFile.close();
         }
-        RuleFindParams  = this.DeterminateParagraphStyle(RuleFindParams);
-        RuleChangeParms = this.DeterminateParagraphStyle(RuleChangeParms);
-        
         var retval = { find: RuleFind, change: RuleChange, findParams: RuleFindParams , changeParams: RuleChangeParms };
-        return retval;
-    }
-
-/** Функция для поиска стиля параграфа с учётом возможного расположения внутри группы */
-    this.DeterminateParagraphStyle =  function (StyleName) {
-        /** hint app.activeDocument.paragraphStyleGroups.item('Summary').paragraphStyles.item('Su_Para_*' ); */
-        var retval="";
-        if (StyleName=="") return "";
-        
-        try {
-            if (StyleName.indexOf("/") == -1 ) {
-                    /** Стиль не вложенный */
-                    retval = myDoc.paragraphStyles.itemByName(StyleName);
-            } else {
-                    /* Стиль Вложенный */
-                    var parts = StyleName.split("/");
-                    var grp = myDoc.paragraphStyleGroups.item(parts[0]);
-                    var style = grp.paragraphStyles.itemByName(parts[1]);
-                    retval = style;
-                    try {
-                        ( style.alignToBaseline == true ) ; /** Костыль - определение найден ли стиль */
-                        } catch (err) {
-                         retval = "";   
-                         }
-            }
-        } catch (err) {
-          //  alert (err);
-                return "";
-        }
         return retval;
     }
 
@@ -167,14 +135,14 @@ function _tv_changer (selectedObject) {
         app.findGrepPreferences.findWhat = parameters.find;
         app.changeGrepPreferences.changeTo =parameters.change;
         if (parameters.findParams != '') {
-            
-            app.findGrepPreferences.appliedParagraphStyle = parameters.findParams;
+            app.findGrepPreferences.appliedParagraphStyle = myDoc.paragraphStyles.item(parameters.findParams);
             needForRevert = true;
         }
         if (parameters.changeParams != '') {
-            app.changeGrepPreferences.appliedParagraphStyle = parameters.changeParams;
+            app.changeGrepPreferences.appliedParagraphStyle = myDoc.paragraphStyles.item(parameters.changeParams);
             needForRevert = true;
         }
+        
 
           ObjectToWork.changeGrep();
           if (needForRevert ){
@@ -201,7 +169,7 @@ function _tv_changer (selectedObject) {
         } catch(err) {
                 throw(err);
         } finally {
-                 chListFile.close();
+                chListFile.close();
         }
         
         
