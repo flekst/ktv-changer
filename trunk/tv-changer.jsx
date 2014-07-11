@@ -135,9 +135,14 @@ function _tv_changer (selectedObject) {
                     var grp = myDoc.paragraphStyleGroups.item(parts[0]);
                     var style = grp.paragraphStyles.itemByName(parts[1]);
                     retval = style;
+                    try {
+                        ( style.alignToBaseline == true ) ; /** Костыль - определение найден ли стиль */
+                        } catch (err) {
+                         retval = "";   
+                         }
             }
         } catch (err) {
-            alert (err);
+          //  alert (err);
                 return "";
         }
         return retval;
