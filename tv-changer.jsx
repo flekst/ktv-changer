@@ -1,4 +1,5 @@
 ﻿#target "indesign"
+
 var DataRoot = '\\\\verstka02\\D\\Work\\TV=works\\ktv-changer\\rules\\';
 /**
     скрипт для централизованной обработки сеток тв-программы.
