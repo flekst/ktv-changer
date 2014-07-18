@@ -31,3 +31,4 @@ ntv	НТВ
 Eurosport	Евроспорт
 Eurosport	Eurosport
 test	Тестовый канал
+Disney	Disney
