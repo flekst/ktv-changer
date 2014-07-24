@@ -1,0 +1,1 @@
+dir /B *.txt > index.dat
