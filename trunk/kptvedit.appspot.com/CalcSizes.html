@@ -1,0 +1,68 @@
+<html>
+<head><title>Расчёт новых размеров модулей «КП» при известной площади и исходном формате</title>
+<script language="javascript">
+var precision = 100;
+function CreateString (paperSize, h, w, square) {
+	h = Math.round( h *precision )/precision;
+	w = Math.round( w *precision )/precision;
+	square = Math.round( square *precision )/precision ;
+	return "<tr><td>"+paperSize+"</td><td>"+h.toString(10)+"</td><td>"+w.toString(10)+"</td><td>"+square.toString(10)+"</td></tr>"
+
+}
+function doCalc() {
+	var prefix = "<table border = 1><tr><td>Стандартный размер и площадь</td><td>Новая высота</td><td>Новая ширина</td><td>Новая площадь</td></tr>" ;
+	var suffix = "</table>";
+	var data = "";
+	var h = 0 + parseInt(document.getElementById("h").value, 10);
+	var w = 0 + parseInt(document.getElementById("w").value, 10);
+	if ( isNaN(h*w) ) {
+	document.getElementById('results').innerHTML='';
+	 return;
+	}
+	/** 1/2 */
+
+	var inSquare = h*w;
+	
+	var x12 = Math.round( Math.sqrt(44704/inSquare)*precision*precision )/(precision*precision);
+	var x14 = Math.round( Math.sqrt(22000/inSquare)*precision*precision )/(precision*precision);
+	var x18 = Math.round( Math.sqrt(10750/inSquare)*precision*precision )/(precision*precision);
+	var x116 = Math.round( Math.sqrt(5160/inSquare)*precision*precision )/(precision*precision);
+	var x132 = Math.round( Math.sqrt(2460/inSquare)*precision*precision )/(precision*precision);
+	var x164 = Math.round( Math.sqrt(1140/inSquare)*precision*precision )/(precision*precision);
+
+	var xA12 = Math.round( Math.sqrt(22000/inSquare)*precision*precision )/(precision*precision);
+	var xA14 = Math.round( Math.sqrt(10750/inSquare)*precision*precision )/(precision*precision);
+	var xA18 = Math.round( Math.sqrt(5160/inSquare)*precision*precision )/(precision*precision);
+	var xA116 = Math.round( Math.sqrt(2408/inSquare)*precision*precision )/(precision*precision);
+	
+	data = data + CreateString ("1/2, 44704", h*x12, 	w*x12, (h*w*x12*x12) );
+	data = data + CreateString ("1/4, 22000", h*x14, 	w*x14, (h*w*x14*x14) );
+	data = data + CreateString ("1/8, 10750", h*x18, 	w*x18, (h*w*x18*x18) );
+	data = data + CreateString ("1/16, 5160", h*x116, 	w*x116, (h*w*x116*x116) );
+	data = data + CreateString ("1/32, 2460", h*x132, 	w*x132, (h*w*x132*x132) );
+	data = data + CreateString ("1/64, 1140", h*x164, 	w*x164, (h*w*x164*x164) );	
+
+	data = data + CreateString ("Авиа 1/2, 22000", h*xA12, 	w*xA12, (h*w*xA12*xA12) );	
+	data = data + CreateString ("Авиа 1/4, 10750", h*xA14, 	w*xA14, (h*w*xA14*xA14) );	
+	data = data + CreateString ("Авиа 1/8, 5160", h*xA18, 	w*xA18, (h*w*xA18*xA18) );	
+	data = data + CreateString ("Авиа 1/16, 2408", h*xA116,	w*xA116, (h*w*xA116*xA116) );				
+
+	document.getElementById('results').innerHTML=prefix + data + suffix;
+}
+</script>
+</head>
+<body>
+<H1>Расчёт новых размеров модулей «КП» при известной площади и исходном формате</H1>
+
+<input onchange="doCalc();" type="text" id="h" size=10 />&nbsp;<label for "h">Исходная высота в милиметрах.</h><br />
+<input onchange="doCalc();" type="text" id="w" size=10 />&nbsp;<label for "h">Исходная ширина в милиметрах.</h><br />
+<input type="button" value="Раcсчитать" onclick="doCalc()" />
+<br />
+<div id="results">
+</div>
+
+
+
+
+
+</body>
