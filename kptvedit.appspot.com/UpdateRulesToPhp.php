@@ -1,7 +1,10 @@
 <?php
 require_once 'ChangeRule.php';
+require_once 'functions.php';
+
 define ("INDESIGN_RULES_FILE", "rulles.dat");
 define ("PHP_RULES_FILE", "php_rules.dat");
+
 $phpRules = Array();
 /**
  * Multibyte safe version of trim()
@@ -14,15 +17,7 @@ $phpRules = Array();
  * @param $chars_array Optional array of preg_quote'd chars to be removed
  * @return string
  */
-function mb_trim( $string, $chars = "", $chars_array = array() )
-{
-	for( $x=0; $x<iconv_strlen( $chars ); $x++ ) $chars_array[] = preg_quote( iconv_substr( $chars, $x, 1 ) );
-	$encoded_char_list = implode( "|", array_merge( array( "\s","\t","\n","\r", "\0", "\x0B" ), $chars_array ) );
 
-	$string = mb_ereg_replace( "^($encoded_char_list)*", "", $string );
-	$string = mb_ereg_replace( "($encoded_char_list)*$", "", $string );
-	return $string;
-}
 
 function parseIndesignRule($name, $IndesignRule, $resultArray) {
 	$search = $IndesignRule[0];
