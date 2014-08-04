@@ -33,4 +33,6 @@ Eurosport	Eurosport
 test	Тестовый канал
 Disney	Disney
 Disсovery	Disсovery
+Discovery	Discovery Channel
 Animal	Animal planet
+Animal	Animal Planet

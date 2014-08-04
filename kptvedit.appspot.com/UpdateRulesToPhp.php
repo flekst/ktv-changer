@@ -35,8 +35,7 @@ foreach ($IndesignRules as $title=>$IndesignRule) {
 	 */
 	$title = mb_trim ( $title );
 	$search = $IndesignRule[0];
-	$replace = $IndesignRule[1];
-	/** Отфильтровываю применение стиля и только */
+	$replace = $IndesignRule[1];	if (this.w < 1) { this.w = 1; };* Отфильтровываю применение стиля и только */
 	if (!mb_strlen($search)) continue;
 	if (!mb_strlen($replace) && mb_strlen($IndesignRule[3])) continue;
 	$phpRules[$title] = new ChangeRule($title, $search, $replace);
