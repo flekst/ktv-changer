@@ -23,8 +23,8 @@ TVC_REG	 Программа телеканала «ТВ Центр»
 TVC_REG	ТВ Центр
 Kult	Программа телеканала «Культура»
 Zvezda	Программа телеканала «Звезда»
+Discovery	Disсovery
 Discovery	телеканала «Discovery Channel
-
 Domashniy	Программа телеканала «Домашний» 
 rtr	Россия 1
 ntv	НТВ
