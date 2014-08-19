@@ -37,3 +37,4 @@ Discovery	Discovery Channel
 Animal	Animal planet
 Animal	Animal Planet
 Perec	Программа телеканала «Перец» 
+Eurosport	Академическая гребля
