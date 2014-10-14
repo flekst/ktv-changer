@@ -1,0 +1,41 @@
+<head>
+<script>
+
+function filterString(inStr) {
+	var retval =  inStr;
+	//alert (retval);
+	var change1 = /^\s+/gi;
+	var change2 = /\s+$/gi;	
+	retval = retval.replace(change1, '');
+	retval = retval.replace(change2, '');	
+	
+	if (retval.length < 5) return "";
+	if (retval.length) return retval + "\n";
+}
+
+function doChanges9 (inp) {
+ var val = inp.value;
+ var tmpVal="";
+ if (val.length === 0 ) { return; }
+ var lines = val.split("\n");
+ var c = lines.length;
+ inp.value = '';
+//  alert (c);
+ for (i = 0; i < c; i++ ) {
+	
+ 	var tmp = filterString (lines[i]);
+ 	//alert (tmp);
+ 	tmpVal += tmp;
+ }
+ inp.value = tmpVal;
+}
+	
+</script>
+</head>
+<body>
+<form>
+<textarea ID="changeMe" cols="50" rows="30">
+</textarea>
+<br /><input type="button" onClick="doChanges9(document.forms[0].changeMe );" value = "DoIT!" />
+</form>
+</body>
