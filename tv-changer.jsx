@@ -270,4 +270,6 @@ function tvch_main() {
 if (tvchNeedForRun == undefined) {
     var tvchNeedForRun = true;
 }
-tvchNeedForRun && tvch_main();
+if (tvchNeedForRun) {
+	app.doScript(tvch_main, ScriptLanguage.JAVASCRIPT, [], UndoModes.FAST_ENTIRE_SCRIPT, 'Обработка тв-программы');
+}
