@@ -1,0 +1,108 @@
+<html>
+<head><title>Расчёт новых размеров модулей «КП» при известной площади и исходном формате</title>
+<style>
+table,td {
+	border: solid black 1px; 
+	colspan: 2px;
+	padding: 2px;
+	background : white;
+	width: 100%;
+	}
+h1 {
+	font-size: 16pt;
+	margin-top: -3px;
+}
+#content {
+	width: 600px;
+	margin: auto;
+	padding: 10px;
+	background: silver;
+	left: 50%;  
+   top: 50%;
+      position: absolute;  
+   overflow: auto;  
+   width: 640px;  
+
+   margin-left: -320px;  
+   margin-top: -240px; 
+
+}
+</style>
+<script language="javascript">
+var precision = 10;
+function CreateString (paperSize, h, w) {
+	h = Math.round( h *precision )/precision;
+	w = Math.round( w *precision )/precision;
+	square = Math.round( h*w*precision*precision )/(precision*precision);
+/*	square = Math.round( square *precision*precision )/(precision*precision); */
+	return "<tr><td>"+paperSize+"&nbsp;мм<sup>2</td><td>"+h.toString(10)+"&nbsp;мм</td><td>"+w.toString(10)+"&nbsp;мм</td><td>"+square.toString(10)+"&nbsp;мм<sup>2</sup></td></tr>"
+
+}
+function doCalc() {
+	var prefix = "<table><tr><td>Стандартный размер<br />в долях полосы и площадь</td><td>Новая высота</td><td>Новая ширина</td><td>Новая площадь</td></tr>" ;
+	var suffix = "</table>";
+	var data = "";
+	var h = 0 + parseInt(document.getElementById("h").value, 10);
+	var w = 0 + parseInt(document.getElementById("w").value, 10);
+	document.getElementById("h").value = h;	
+	document.getElementById("w").value = w;
+	if (isNaN(h) || (h < 1) ) {
+		h = 1;
+		document.getElementById("h").value = 1;
+	}
+	
+	if (isNaN(w) || (w < 1) ) {
+		w = 1;
+		document.getElementById("w").value = 1;
+	}
+	
+	if ( isNaN(h*w) ) {
+	document.getElementById('results').innerHTML='';
+	 return;
+	}
+	/** 1/2 */
+
+	var inSquare = h*w;
+	
+	var x12 = Math.round( Math.sqrt(44704/inSquare)*precision*precision )/(precision*precision);
+	var x14 = Math.round( Math.sqrt(22000/inSquare)*precision*precision )/(precision*precision);
+	var x18 = Math.round( Math.sqrt(10750/inSquare)*precision*precision )/(precision*precision);
+	var x116 = Math.round( Math.sqrt(5160/inSquare)*precision*precision )/(precision*precision);
+	var x132 = Math.round( Math.sqrt(2460/inSquare)*precision*precision )/(precision*precision);
+	var x164 = Math.round( Math.sqrt(1140/inSquare)*precision*precision )/(precision*precision);
+
+	var xA12 = Math.round( Math.sqrt(22000/inSquare)*precision*precision )/(precision*precision);
+	var xA14 = Math.round( Math.sqrt(10750/inSquare)*precision*precision )/(precision*precision);
+	var xA18 = Math.round( Math.sqrt(5160/inSquare)*precision*precision )/(precision*precision);
+	var xA116 = Math.round( Math.sqrt(2408/inSquare)*precision*precision )/(precision*precision);
+	
+	data = data + CreateString ("1/2, 44704", h*x12, 	w*x12 );
+	data = data + CreateString ("1/4, 22000", h*x14, 	w*x14);
+	data = data + CreateString ("1/8, 10750", h*x18, 	w*x18 );
+	data = data + CreateString ("1/16, 5160", h*x116, 	w*x116 );
+	data = data + CreateString ("1/32, 2460", h*x132, 	w*x132 );
+	data = data + CreateString ("1/64, 1140", h*x164, 	w*x164 );	
+
+	data = data + CreateString ("Авиа 1/2, 22000", h*xA12, 	w*xA12 );	
+	data = data + CreateString ("Авиа 1/4, 10750", h*xA14, 	w*xA14 );	
+	data = data + CreateString ("Авиа 1/8, 5160", h*xA18, 	w*xA18 );	
+	data = data + CreateString ("Авиа 1/16, 2408", h*xA116,	w*xA116 );				
+
+	document.getElementById('results').innerHTML=prefix + data + suffix;
+}
+</script>
+</head>
+<body onLoad="doCalc();"><div id="content"><H1>Расcчёт новых размеров модулей «КП»<br />при известной площади и исходном формате<br />с точностью до десятых долей милиметра.</H1>
+<div>Исходные размеры в милиметрах, пикселях - не важно. важны лишь пропорции:</div>
+<input onchange="doCalc();" type="text" id="h" size=10 value = "1"/>&#215;<input onchange="doCalc();" type="text" id="w" size=10 value = "1" />&nbsp;<input type="button" value="Раcсчитать" onclick="doCalc()" />
+<br />
+<div>Результат - максимально приближенный размер с точностью до десятых долей милиметра:</div>
+<div id="results">
+</div>
+</div>
+
+
+
+
+
+</body>
