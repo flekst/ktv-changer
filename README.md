@@ -7,13 +7,13 @@
 
 Делался под себя с попыткой сделать работу прозрачной, поэтому комментирование не слишком густое лишь в заголовке да неочевидных местах.
 
-[tv-changer.jsx](https://code.google.com/p/ktv-changer/source/browse/trunk/tv-changer.jsx) -  cам скрипт, который запускается из Indesign.
+[tv-changer.jsx](https://github.com/flekst/ktv-changer/tree/master/tv-changer.jsx) -  cам скрипт, который запускается из Indesign.
 
 В далеких планах реализация существующей возможности настраивания расположения правил.
 
 В текущий момент задача отложена в долгий ящик. В случае необходимости достаточно поправить вторую строку скрипта -она указывает на папку с правилами.
 
-[rules](https://code.google.com/p/ktv-changer/source/browse/trunk/rules) - это папка с правилами. Формат описан в [Описание структуры.txt](https://code.google.com/p/ktv-changer/source/browse/trunk/rules/%D0%9E%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5%20%D1%81%D1%82%D1%80%D1%83%D0%BA%D1%82%D1%83%D1%80%D1%8B.txt)
+[rules](https://github.com/flekst/ktv-changer/tree/master/rules) - это папка с правилами. Формат описан в [Описание структуры.txt](https://github.com/flekst/ktv-changer/blob/master/rules/Описание%20структуры.txt)
 
 
 ---
