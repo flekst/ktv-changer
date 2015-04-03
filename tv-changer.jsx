@@ -230,6 +230,14 @@ function _tv_changer (selectedObject) {
     /** _tv_changer_constructor return */
     return this;
 }
+/** Костыль для двойного вызова функции чистки тв.
+    В некоторых случаях требуется.
+    Ломает искать в каких - и так работает.
+*/
+function tvch_main_loop() {
+	tvch_main();
+	tvch_main();
+}
 
 /** головная функция скрипта */
 function tvch_main() {
@@ -272,5 +280,5 @@ if (tvchNeedForRun == undefined) {
     var tvchNeedForRun = true;
 }
 if (tvchNeedForRun) {
-	app.doScript(tvch_main, ScriptLanguage.JAVASCRIPT, [], UndoModes.FAST_ENTIRE_SCRIPT, 'Обработка тв-программы');
+	app.doScript(tvch_main_loop, ScriptLanguage.JAVASCRIPT, [], UndoModes.FAST_ENTIRE_SCRIPT, 'Обработка тв-программы');
 }
