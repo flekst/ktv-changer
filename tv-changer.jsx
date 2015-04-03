@@ -245,6 +245,7 @@ function tvch_main() {
         	(objectToWork == '[object InsertionPoint]') ||
         	(objectToWork == '[object Character]') || 
             (objectToWork == '[object Paragraph]') || 
+	    (objectToWork == '[object Word]') || 
             (objectToWork == '[object Line]')  )
         {
         	objectToWork=objectToWork.parentStory
