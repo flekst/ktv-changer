@@ -31,7 +31,8 @@ var tv_changer_config = {
     itemListWork:'500-main.txt',
     itemListPostCommon:'999-post-common.txt',
     RulesDir:DataRoot+'0Rules\\',
-    ChangeRuleTitle:'заменить'
+    ChangeRuleTitle:'заменить',
+    StopRuleTitle:'стоп'
 }
 
 
@@ -82,7 +83,7 @@ function _tv_changer (selectedObject) {
         var RuleFind;
        var RuleChange;
        var tmpdata;
-       
+       if (RuleName.toLowerCase() ==  tv_changer_config.StopRuleTitle) { exit(); } /* Останов для отладки */
         if (RuleName.toLowerCase() ==  tv_changer_config.ChangeRuleTitle) {
                     tmpdata = RuleParameter.split('#');
                     RuleFind = tmpdata[0];
