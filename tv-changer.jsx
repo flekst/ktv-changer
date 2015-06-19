@@ -105,7 +105,7 @@ function _tv_changer (selectedObject) {
                  if (RuleChange == undefined) RuleChange = '';
                  if (RuleFindParams == undefined) RuleFindParams = "";
                  if (RuleChangeParms == undefined) RuleChangeParms = "";
-                
+	
                 RuleFind = RuleFind.replace(/-=-/g, RuleParameter);
                 RuleChange = RuleChange.replace(/-=-/g, RuleParameter);
             
