@@ -1,4 +1,4 @@
 ﻿^(\d?\d.\d\d)
 $1
 
-tv_1402/tv_niz_osn2
+tv_1402/tv_niz_osn22

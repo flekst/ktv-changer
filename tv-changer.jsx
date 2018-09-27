@@ -1,6 +1,6 @@
 ﻿#target "indesign"
 
-var DataRoot = '\\\\verstka02\\D\\Work\\TV=works\\ktv-changer\\rules\\';
+var DataRoot = '\\\\Verstka01\\TV works\\ktv-changer\\rules\\';
 /**
     скрипт для централизованной обработки сеток тв-программы.
     Предполагаемые функции:
@@ -50,7 +50,7 @@ function _tv_changer(selectedObject) {
         var chFile = File(tv_changer_config.root + tv_changer_config.list);
         chFile.open('r');
         var testString = ObjectToWork.contents;
-
+    
         try {
             while (!chFile.eof) {
                 var line = chFile.readln();
@@ -248,7 +248,7 @@ function _tv_changer(selectedObject) {
 */
 function tvch_main_loop() {
     tvch_main();
-    tvch_main();
+//    tvch_main();
 }
 
 /** головная функция скрипта */
@@ -290,5 +290,6 @@ if (tvchNeedForRun == undefined) {
     var tvchNeedForRun = true;
 }
 if (tvchNeedForRun) {
-    app.doScript(tvch_main_loop, ScriptLanguage.JAVASCRIPT, [], UndoModes.FAST_ENTIRE_SCRIPT, 'Обработка тв-программы');
+   app.doScript(tvch_main_loop, ScriptLanguage.JAVASCRIPT, [], UndoModes.FAST_ENTIRE_SCRIPT, 'Обработка тв-программы');
 }
+tvch_main();tvch_main();
